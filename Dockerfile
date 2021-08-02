@@ -1,5 +1,4 @@
 FROM node:lts-alpine
-RUN node install yarn --global
-ADD .
+ADD . /
 RUN yarn install && yarn build
 CMD yarn start
