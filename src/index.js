@@ -9,6 +9,6 @@ setInterval(async () => {
         EventHandler.emitRestaurantAvailable(TrackedRestaurant)
     else
         EventHandler.emitRestaurantUnavailable(TrackedRestaurant)
-},5000)
+},60000)
 
 console.log("Listening to GDB status")
