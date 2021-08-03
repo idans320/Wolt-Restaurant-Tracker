@@ -6,7 +6,7 @@
   "scripts": {
     "build": "babel src --out-dir=dist",
     "start": "nodemon -r dotenv/config dist/index.js",
-    "dev": "nodemon -r dotenv/config i--watch src --exec babel-node src/index.js",
+    "dev": "nodemon -r dotenv/config --watch src --exec babel-node src/index.js",
     "test": "jest --setupFiles dotenv/config"
   },
   "devDependencies": {
