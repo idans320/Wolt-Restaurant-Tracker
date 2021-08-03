@@ -1,9 +1,8 @@
 import {Restaurant} from  "./services/wolt/restaurants"
 import * as EventHandler from "./EventHandler"
 
-const TrackedRestaurant = new Restaurant(process.env.WOLT_RESTAURANT)
-
 setInterval(async () => { 
+    const TrackedRestaurant = new Restaurant(process.env.WOLT_RESTAURANT)
     const isAvailable = await TrackedRestaurant.getIsAvailable()
     if (isAvailable)
         EventHandler.emitRestaurantAvailable(TrackedRestaurant)
