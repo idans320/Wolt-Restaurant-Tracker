@@ -1,6 +1,6 @@
 import { WOLT_URL_RESTAURANT } from "./constants";
 import got from "got";
-import { JSDOM } from "jsdom";
+import { parse } from 'node-html-parser';
 
 export class Restaurant {
   constructor(name) {
@@ -9,14 +9,12 @@ export class Restaurant {
   }
   async getHtml() {
     const html = await got.get(this.url);
-    const dom = new JSDOM(html.data);
-    return dom;
+    return html.body
   }
   async getIsAvailable() {
     const html = await this.getHtml();
-    const isAvaliable = !!html.window.document.querySelector(
-      'span[data-localization-key="order.empty"]'
-    );
+    const dom = parse(html)
+    const isAvaliable = !!dom.querySelector('span[data-localization-key="order.empty"]');
     return isAvaliable;
   }
 }

@@ -17,16 +17,14 @@ const lilush = new Restaurant("lilush");
 lilush.getHtml = async () => {
 	
 	const html = await fs.promises.readFile(path.join(__dirname,"res/lilush.html"))
-	const dom = new JSDOM(html)
-	return dom
+	return html
 } 
 
 
 GDBRestaurant.getHtml = async () => {
 	
 	const html = await fs.promises.readFile(path.join(__dirname,"res/GDB.html"))
-	const dom = new JSDOM(html)
-	return dom
+	return html
 } 
 
 
