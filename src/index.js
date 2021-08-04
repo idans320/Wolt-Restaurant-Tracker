@@ -20,7 +20,7 @@ async function main() {
 
     await timeOutPromise;
 
-    main();
+    await main();
 }
 
 console.log("Listening to GDB status")
