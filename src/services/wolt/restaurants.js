@@ -1,5 +1,5 @@
 import { WOLT_URL_RESTAURANT } from "./constants";
-import got from "got";
+import { request } from 'undici'
 import { parse } from 'node-html-parser';
 
 export class Restaurant {
@@ -8,8 +8,11 @@ export class Restaurant {
     this.url = `${WOLT_URL_RESTAURANT}/${this.name}`
   }
   async getHtml() {
-    const html = await got.get(this.url);
-    return html.body
+    const { body } = await request(this.url);
+    body.setEncoding('utf8')
+    for await (const data of body) {
+      return data
+    }
   }
   async getIsAvailable() {
     const html = await this.getHtml();
