@@ -9,8 +9,10 @@ mv .env.exmaple .env
 
 Change the .env parameters
 
-```docker build . -t wolttracker
 ```
+docker build . -t wolttracker
+```
+
 ```
 docker run wolttracker
 ```
