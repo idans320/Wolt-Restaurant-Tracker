@@ -14,3 +14,6 @@ Change the .env parameters
 docker run wolttracker
 ```
 
+# HOW TO TEST
+
+yarn jest
