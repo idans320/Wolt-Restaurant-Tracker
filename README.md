@@ -19,5 +19,5 @@ docker run wolttracker
 
 # HOW TO TEST
 ```
-yarn jest
+yarn test
 ```
