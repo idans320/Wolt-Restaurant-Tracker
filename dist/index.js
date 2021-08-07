@@ -28,16 +28,15 @@ var trackStatus = /*#__PURE__*/function () {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            console.log("checking gdb status");
             TrackedRestaurant = new _restaurants.Restaurant(process.env.WOLT_RESTAURANT);
-            _context.next = 4;
+            _context.next = 3;
             return TrackedRestaurant.getIsAvailable();
 
-          case 4:
+          case 3:
             isAvailable = _context.sent;
             if (isAvailable) EventHandler.emitRestaurantAvailable(TrackedRestaurant);else EventHandler.emitRestaurantUnavailable(TrackedRestaurant);
 
-          case 6:
+          case 5:
           case "end":
             return _context.stop();
         }
@@ -53,4 +52,4 @@ var trackStatus = /*#__PURE__*/function () {
 q.autostart = true;
 setInterval(function () {
   q.push(trackStatus);
-}, 2000);
+}, 100);

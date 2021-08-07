@@ -11,7 +11,7 @@ var _events = _interopRequireDefault(require("events"));
 
 var _constants = require("./constants");
 
-var _telegram = require("../telegram");
+var _telegram = _interopRequireDefault(require("../telegram"));
 
 var current_status = {
   status: null
@@ -20,14 +20,18 @@ var EventHandler = new _events["default"]();
 EventHandler.on(_constants.RESTAURANT_AVAILABLE, function (restaurant) {
   if (!current_status.status || current_status.status === _constants.RESTAURANT_UNAVAILABLE) {
     var message = "".concat(restaurant.name, " is now available :)\n ").concat(restaurant.url);
-    (0, _telegram.sendMessage)(message);
+
+    _telegram["default"].sendMessage(message);
+
     current_status.status = _constants.RESTAURANT_AVAILABLE;
   }
 });
 EventHandler.on(_constants.RESTAURANT_UNAVAILABLE, function (restaurant) {
   if (!current_status.status || current_status.status === _constants.RESTAURANT_AVAILABLE) {
     var message = "".concat(restaurant.name, " is now unavailable :(");
-    (0, _telegram.sendMessage)(message);
+
+    _telegram["default"].sendMessage(message);
+
     current_status.status = _constants.RESTAURANT_UNAVAILABLE;
   }
 });

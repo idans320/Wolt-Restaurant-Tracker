@@ -1,10 +1,15 @@
 import TelegramBot from "node-telegram-bot-api"
 
-const token = process.env.TELEGRAM_TOKEN;
 
-const chat_id = process.env.TELEGRAM_CHAT_ID;
-
-export const sendMessage = (text) => {
-    const bot = new TelegramBot(token);
-    bot.sendMessage(chat_id,text)
+class Telegram {
+    token = process.env.TELEGRAM_TOKEN;
+    chat_id = process.env.TELEGRAM_CHAT_ID;
+    sendMessage = (text) => {
+        const bot = new TelegramBot(this.token);
+        bot.sendMessage(this.chat_id, text)
+    }
 }
+
+const telegram = new Telegram()
+
+export default telegram

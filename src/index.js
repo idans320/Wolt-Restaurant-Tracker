@@ -1,3 +1,4 @@
+"use strict";
 import { Restaurant } from "./services/wolt/restaurants"
 import * as EventHandler from "./EventHandler"
 import Queue from "queue"
@@ -18,6 +19,6 @@ q.autostart = true
 
 setInterval(() => {
     q.push(trackStatus)
-}, 2000)
+}, 30000)
 
 
