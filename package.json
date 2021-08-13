@@ -1,5 +1,5 @@
 {
-  "name": "GDBBot",
+  "name": "WoltTracker",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -30,7 +30,7 @@
     "core-js": "^3.16.0",
     "dotenv": "^10.0.0",
     "got": "^11.8.2",
-    "node-html-parser": "^4.1.2",
+    "node-fetch": "^2.6.1",
     "node-telegram-bot-api": "^0.54.0",
     "nodemon": "^2.0.12",
     "queue": "^6.0.2",

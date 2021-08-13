@@ -1,23 +1,20 @@
-import { WOLT_URL_RESTAURANT } from "./constants";
-import { request } from 'undici'
-import { parse } from 'node-html-parser';
+import { WOLT_URL_RESTAURANT_SITE, WOLT_URL_VENUES_API } from "./constants";
+import fetch from "node-fetch"
 
 export class Restaurant {
   constructor(name) {
     this.name = name;
-    this.url = `${WOLT_URL_RESTAURANT}/${this.name}`
+    this.apiUrl = `${WOLT_URL_VENUES_API}/${this.name}`
+    this.website = `${WOLT_URL_RESTAURANT_SITE}/${this.name}`
   }
-  async getHtml() {
-    const { body } = await request(this.url);
-    body.setEncoding('utf8')
-    for await (const data of body) {
-      return data
-    }
+  async getData() {
+    const data = await fetch(this.apiUrl);
+    const json = await data.json()
+    return json.results[0]
   }
   async getIsAvailable() {
-    const html = await this.getHtml();
-    const dom = parse(html)
-    const isAvaliable = !!dom.querySelector('span[data-localization-key="order.empty"]');
+    const resturantData = await this.getData();
+    const isAvaliable = !!resturantData.online
     return isAvaliable;
   }
 }

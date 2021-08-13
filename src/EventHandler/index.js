@@ -8,7 +8,7 @@ const EventHandler = new EventEmitter();
 
 EventHandler.on(RESTAURANT_AVAILABLE, (restaurant) => {
     if (!current_status.status || current_status.status === RESTAURANT_UNAVAILABLE) {
-        const message = `${restaurant.name} is now available :)\n ${restaurant.url}`
+        const message = `${restaurant.name} is now available :)\n ${restaurant.website}`
         Telegram.sendMessage(message)
         current_status.status = RESTAURANT_AVAILABLE
     }
